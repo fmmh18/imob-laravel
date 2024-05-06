@@ -40,9 +40,8 @@
                 <div class="row">
                     <div class="col-12">{!! Form::label('type_rent', 'Aluguel', ['class' => 'col-form-label font-weight-bold']) !!}</div>
                     <div class="col-12">
-                        <input type="checkbox" class="form-check"
-                            @if ($data->type_rent == 1) checked="true" @else checked="false" @endif name="type_rent"
-                            id="type_rent">
+                        <input type="checkbox" class="form-check" @if (isset($data->type_rent) ? $data->type_rent == 1 : false) checked="true" @endif
+                            name="type_rent" id="type_rent">
                         @if (!empty($errors->first('type_rent')))
                             <label class="invalid-feedback d-block">{!! $errors->first('type_rent') !!}</label>
                         @endif
@@ -65,9 +64,8 @@
                 <div class="row">
                     <div class="col-12">{!! Form::label('type_buy', 'Venda', ['class' => 'col-form-label font-weight-bold']) !!}</div>
                     <div class="col-12">
-                        <input type="checkbox" class="form-check"
-                            @if ($data->type_buy == 1) checked="true" @else checked="false" @endif name="type_buy"
-                            id="type_buy">
+                        <input type="checkbox" class="form-check" @if (isset($data->type_buy) ? $data->type_buy == 1 : false) checked="true" @endif
+                            name="type_buy" id="type_buy">
                         @if (!empty($errors->first('type_buy')))
                             <label class="invalid-feedback d-block">{!! $errors->first('type_buy') !!}</label>
                         @endif
@@ -95,6 +93,22 @@
                     ]) !!}
                         @if (!empty($errors->first('type_id')))
                             <label class="invalid-feedback d-block">{!! $errors->first('type_id') !!}</label>
+                        @endif
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">{!! Form::label('address', 'Endereço', ['class' => 'col-form-label font-weight-bold']) !!}</div>
+                    <div class="col-12"> {!! Form::text('address', null, ['class' => 'form-control', 'placeholder' => 'Endereço']) !!}
+                        @if (!empty($errors->first('address')))
+                            <label class="invalid-feedback d-block">{!! $errors->first('address') !!}</label>
+                        @endif
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">{!! Form::label('neighborhood', 'Bairro', ['class' => 'col-form-label font-weight-bold']) !!}</div>
+                    <div class="col-12"> {!! Form::text('neighborhood', null, ['class' => 'form-control', 'placeholder' => 'Bairro']) !!}
+                        @if (!empty($errors->first('neighborhood')))
+                            <label class="invalid-feedback d-block">{!! $errors->first('neighborhood') !!}</label>
                         @endif
                     </div>
                 </div>
@@ -138,13 +152,29 @@
                                 {!! Form::checkbox(
                                     'feature[]',
                                     $key,
-                                    isset($data) ? in_array($key, $data->permissions->pluck('id')->toArray()) : false,
-                                    ['class' => 'custom-control-input', 'id' => 'permission-' . $value->id],
+                                    isset($data) ? in_array($key, $data->features->pluck('id')->toArray()) : false,
+                                    ['class' => 'custom-control-input', 'id' => 'feature-' . $key],
                                 ) !!}
                                 {!! Form::label('feature-' . $key, $value, ['class' => 'custom-control-label']) !!}
                             </div>
                         </div>
                     @endforeach
+                </div>
+                <div class="row">
+                    <div class="col-12">{!! Form::label('bedroom', 'Quarto(s)', ['class' => 'col-form-label font-weight-bold']) !!}</div>
+                    <div class="col-12"> {!! Form::text('bedroom', null, ['class' => 'form-control', 'placeholder' => 'Quarto(s)']) !!}
+                        @if (!empty($errors->first('bedroom')))
+                            <label class="invalid-feedback d-block">{!! $errors->first('bedroom') !!}</label>
+                        @endif
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">{!! Form::label('bathroom', 'Banheiro(s)', ['class' => 'col-form-label font-weight-bold']) !!}</div>
+                    <div class="col-12"> {!! Form::text('bathroom', null, ['class' => 'form-control', 'placeholder' => 'Banheiro(s)']) !!}
+                        @if (!empty($errors->first('bathroom')))
+                            <label class="invalid-feedback d-block">{!! $errors->first('bathroom') !!}</label>
+                        @endif
+                    </div>
                 </div>
 
                 <div class="row">
@@ -161,6 +191,7 @@
                         <input type="file" name="fotos[]" id="fotos" multiple>
                     </div>
                 </div>
+                <div id="galeria"></div>
                 <div class="row">
                     <div class="col-12 text-end pt-3">
                         <a href="{!! route('dashboard.property.index') !!}" class="btn btn-secondary rounded-0">Voltar</a>
@@ -180,6 +211,7 @@
         document.addEventListener("DOMContentLoaded", function() {
             var estadoSelect = document.getElementById("state_id");
             var cidadeSelect = document.getElementById("city_id");
+            var galeriaDiv = document.getElementById("galeria");
 
             estadoSelect.addEventListener("change", function() {
                 buscarCidades();
@@ -244,10 +276,12 @@
             });
         });
     </script>
-    {{-- @if (isset($data))
+
+    @if (isset($data))
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 var xhr = new XMLHttpRequest();
+                var divFoto = '';
                 xhr.open('GET', '{{ route('api.listar.fotos', $data->id) }}', true);
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.onreadystatechange = function() {
@@ -255,7 +289,22 @@
                         if (xhr.status === 200) {
                             var fotos = JSON.parse(xhr.responseText);
                             // Manipule os dados retornados aqui
-                            console.log(fotos);
+                            divFoto += '<div class="row py-4">'
+                            fotos.forEach(function(foto) {
+                                divFoto += '<div class="col-11 py-2">'
+                                divFoto += '<img src="' + foto['url_image'] +
+                                    '" class="img-responsive" width="240" height="240" />'
+                                divFoto += '</div>'
+                                divFoto += '<div class="col-1 py-2">'
+                                divFoto +=
+                                    '<a href="{!! route('api.excluir.foto') !!}?id={!! $data->id !!}&nomeArquivo=' +
+                                    foto['image'] + '" class="btn btn-outline-danger btn-delete">';
+                                divFoto += '<i class="bi bi-x-square"></i></a>';
+                                divFoto += '</div>'
+                                console.log('foto' + foto)
+                                document.getElementById("galeria").innerHTML = divFoto
+                            })
+                            divFoto += '</div>'
                         } else {
                             console.error('Erro na requisição: ' + xhr.status);
                         }
@@ -263,6 +312,30 @@
                 };
                 xhr.send();
             });
+
+
+            function excluirFoto(nomeArquivo) {
+                if (confirm("Tem certeza de que deseja excluir esta foto?")) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '{{ route('api.excluir.foto') }}', true);
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === XMLHttpRequest.DONE) {
+                            if (xhr.status === 200) {
+                                // Atualize a interface ou faça qualquer outra ação necessária
+                                alert('Foto excluída com sucesso.');
+                                // Por exemplo, você pode recarregar a página para atualizar a lista de fotos
+                                window.location.reload();
+                            } else {
+                                alert('Erro ao excluir a foto.');
+                            }
+                        }
+                    };
+                    xhr.send(JSON.stringify({
+                        nome_arquivo: nomeArquivo
+                    }));
+                }
+            }
         </script>
-    @endif --}}
+    @endif
 @endsection

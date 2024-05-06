@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('listar-fotos/{id}', [App\Http\Controllers\api\fotoController::class, 'listarFotos'])->name('api.listar.fotos');
+Route::get('excluir-foto', [App\Http\Controllers\api\fotoController::class, 'excluirFoto'])->name('api.excluir.foto');
 
 Route::get('cidade-por-estado', [App\Http\Controllers\api\cityController::class, 'cityByState'])->name('api.cityByState');
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

@@ -69,7 +69,6 @@ class propertyController extends dashboardController
             'value_buy' => str_replace(array(','), '.', $value_buy)
         ));
 
-
         try {
 
             $data = Property::create($request->all());

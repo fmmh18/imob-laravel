@@ -29,6 +29,14 @@
                         'files' => true,
                     ]) !!}
                 @endif
+                <div class="row">
+                    <div class="col-12">{!! Form::label('name', 'Nome', ['class' => 'col-form-label font-weight-bold']) !!}</div>
+                    <div class="col-12"> {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nome']) !!}
+                        @if (!empty($errors->first('name')))
+                            <label class="invalid-feedback d-block">{!! $errors->first('name') !!}</label>
+                        @endif
+                    </div>
+                </div>
 
 
                 <div class="row">

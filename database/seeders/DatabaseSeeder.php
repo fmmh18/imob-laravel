@@ -53,6 +53,9 @@ class DatabaseSeeder extends Seeder
                 $route->getName() != 'dashboard.update-me' &&
                 $route->getName() != 'dashboard.home.setSite' &&
                 $route->getName() != 'dashboard.home.setCompany' &&
+                $route->getName() != 'api.cityByState' &&
+                $route->getName() != 'api.listar.fotos' &&
+                $route->getName() != 'api.excluir.foto' &&
                 $route->getName() != ''
             ) {
                 $module = Module::where('title', $route->getAction('module'))->get();

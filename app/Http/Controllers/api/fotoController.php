@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\JsonResponse;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class fotoController extends Controller
 {
@@ -26,26 +27,31 @@ class fotoController extends Controller
         foreach ($arquivos as $arquivo) {
 
             // Adiciona o caminho completo da imagem ao array de fotos
-            $fotos[] = asset('storage/imovel/' . $id . '/' . $arquivo->getFilename());
+            $fotos[] = [
+                'url_image' => asset('storage/imovel/' . $id . '/' . $arquivo->getFilename()),
+
+                'image' => $arquivo->getFilename()
+            ];
         }
 
         return response()->json($fotos);
     }
 
-    public function excluirFoto(Request $request): JsonResponse
+    public function excluirFoto(Request $request)
     {
-        $caminhoFoto = public_path('storage/imovel/' . $request->id . '/' . $request->nome_arquivo); // Caminho completo da foto
+        $caminhoFoto = public_path('storage/imovel/' . $request->id . '/' . $request->nomeArquivo); // Caminho completo da foto
 
         // Verifica se o arquivo existe
         if (File::exists($caminhoFoto)) {
             // Tenta excluir o arquivo
             if (File::delete($caminhoFoto)) {
-                return response()->json(['success' => 'Foto excluída com sucesso.']);
+                Alert::success('Propriedade', 'Registro excluído com sucesso!');
             } else {
-                return response()->json(['error' => 'Erro ao excluir a foto.'], 500);
+                Alert::error('Propriedade', 'Registro não excluído!');
             }
         } else {
-            return response()->json(['error' => 'Foto não encontrada.'], 404);
+            Alert::error('Propriedade', 'Foto não encontrada.');
         }
+        return redirect()->back();
     }
 }
