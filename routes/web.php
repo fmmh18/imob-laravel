@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect(route('login'));
-});
+Route::get('/', [\App\Http\Controllers\indexController::class, 'index'])->name('index');
+Route::get('/imovel/listar', [\App\Http\Controllers\indexController::class, 'list'])->name('list');
+Route::get('/imovel/{id}', [\App\Http\Controllers\indexController::class, 'detail'])->name('detail');
+Route::get('/foto/{id}', [\App\Http\Controllers\indexController::class, 'primeiroArquivo'])->name('fotos');
 
 route::get('/login', function () {
     return redirect(route('login'));

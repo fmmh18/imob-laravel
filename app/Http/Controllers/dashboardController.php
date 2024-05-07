@@ -14,7 +14,7 @@ class dashboardController extends BaseController
     public function __construct($user, $request)
     {
         //Criando a rota sempre apartir da rota WEB
-        $this->addRoute();
+        //$this->addRoute();
         $menus =  [];
         if ($request->session()->get('company_id') && $user->is_manager != 1) {
             $permissions = $user->roles()->where('company_id', $request->session()->get('company_id'))->where('user_id', $user->id)->get();

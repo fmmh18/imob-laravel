@@ -56,6 +56,9 @@ class DatabaseSeeder extends Seeder
                 $route->getName() != 'api.cityByState' &&
                 $route->getName() != 'api.listar.fotos' &&
                 $route->getName() != 'api.excluir.foto' &&
+                $route->getName() != 'index' &&
+                $route->getName() != 'fotos' &&
+                $route->getName() != 'detail' &&
                 $route->getName() != ''
             ) {
                 $module = Module::where('title', $route->getAction('module'))->get();

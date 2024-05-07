@@ -112,6 +112,16 @@ class propertyController extends dashboardController
         try {
             $data = Property::find($id);
 
+            $data->features()->sync(($request->input('feature') == null) ? [] : $request->input('feature'));
+
+
+            if ($request->hasFile('fotos')) {
+                foreach ($request->file('fotos') as $foto) {
+                    // Salvar a foto em algum lugar (por exemplo, no armazenamento público)
+                    $foto->store('public/imovel/' . $data->id . '/');
+                }
+            }
+
             Alert::success('Propriedade', 'Atualizado realizado com sucesso!');
         } catch (Exception $e) {
             Alert::error('Propriedade', 'Erro ao atualizar');

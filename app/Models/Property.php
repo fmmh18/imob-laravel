@@ -34,4 +34,25 @@ class Property extends Model
     {
         return $this->belongsToMany(Feature::class);
     }
+
+
+    public function type()
+    {
+        return $this->hasOne(Type::class, 'id', 'type_id');
+    }
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+    public function city()
+    {
+        return $this->hasOne(City::class, 'id', 'city_id');
+    }
+
+    public function state()
+    {
+        return $this->hasOne(State::class, 'id', 'state_id');
+    }
 }
