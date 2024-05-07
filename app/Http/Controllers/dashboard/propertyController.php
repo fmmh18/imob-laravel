@@ -8,6 +8,7 @@ use App\Models\Feature;
 use App\Models\Property;
 use App\Models\State;
 use App\Models\Type;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,11 +50,12 @@ class propertyController extends dashboardController
         $allCities = City::all()->pluck('name', 'id');
         $allTypes = Type::all()->pluck('name', 'id');
         $allFeatures = Feature::all()->pluck('name', 'id');
+        $allUsers = User::where('is_manager',1)->get()->pluck('name','id');
 
 
 
         \Config::set('layout.titulo', 'Criar');
-        return view('dashboard.property.form', ['allStates' => $allStates, 'allCities' => $allCities, 'allTypes' => $allTypes, 'allFeatures' => $allFeatures]);
+        return view('dashboard.property.form', ['allStates' => $allStates, 'allCities' => $allCities, 'allTypes' => $allTypes, 'allFeatures' => $allFeatures, 'allUsers' => $allUsers]);
     }
 
     public function store(Request $request)
@@ -101,10 +103,11 @@ class propertyController extends dashboardController
         $allCities = City::all()->pluck('name', 'id');
         $allTypes = Type::all()->pluck('name', 'id');
         $allFeatures = Feature::all()->pluck('name', 'id');
+        $allUsers = User::where('is_manager',1)->get()->pluck('name','id');
 
         \Config::set('layout.titulo', 'Editar');
 
-        return view('dashboard.property.form', ['data' => $data, 'allStates' => $allStates, 'allCities' => $allCities, 'allTypes' => $allTypes, 'allFeatures' => $allFeatures]);
+        return view('dashboard.property.form', ['data' => $data, 'allStates' => $allStates, 'allCities' => $allCities, 'allTypes' => $allTypes, 'allFeatures' => $allFeatures,'allUsers' => $allUsers]);
     }
 
     public function update(Request $request, $id)

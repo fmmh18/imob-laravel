@@ -38,6 +38,17 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-12">{!! Form::label('user_id', 'Corretor', ['class' => 'col-form-label font-weight-bold', 'id' => 'Corretor']) !!}</div>
+                    <div class="col-12">{!! Form::select('user_id', $allUsers, null, [
+                        'class' => 'form-control',
+                        'placeholder' => 'Selecione uma opção',
+                    ]) !!}
+                        @if (!empty($errors->first('user_id')))
+                            <label class="invalid-feedback d-block">{!! $errors->first('user_id') !!}</label>
+                        @endif
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-12">{!! Form::label('type_rent', 'Aluguel', ['class' => 'col-form-label font-weight-bold']) !!}</div>
                     <div class="col-12">
                         <input type="checkbox" class="form-check" @if (isset($data->type_rent) ? $data->type_rent == 1 : false) checked="true" @endif

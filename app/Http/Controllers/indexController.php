@@ -31,6 +31,18 @@ class indexController extends Controller
     public function list(Request $request)
     {
         $allProperties = Property::paginate(15);
+
+        if ($request->input('type')) {
+            $allProperties = $allProperties->where('type_id', $request->input('type'));
+        }
+        if ($request->input('city')) {
+            $allProperties = $allProperties->where('city_id', $request->input('city'));
+        }
+        if ($request->input('title')) {
+            $allProperties = $allProperties->where('title', 'like', '%' . $request->input('title') . '%');
+        }
+
+
         $allCities = City::join('properties', 'cities.id', '=', 'properties.city_id')
             ->select('cities.id AS id', 'cities.name AS name')
             ->distinct()

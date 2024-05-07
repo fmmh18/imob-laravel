@@ -71,6 +71,10 @@
                 </div>
 
             @empty
+
+                <div class="col-12 text-center">
+                    <h3>Não existe imóveis cadastrados!</h3>
+                </div>
             @endforelse
         </div>
         <div class="more-btn centred"><a href="{!! route('list') !!}" class="theme-btn btn-one">Ver todos</a>
