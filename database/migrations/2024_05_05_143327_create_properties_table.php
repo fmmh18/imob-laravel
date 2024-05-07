@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('neighborhood');
             $table->integer('city_id');
+            $table->integer('user_id');
             $table->integer('state_id');
             $table->integer('type_id');
             $table->string('bedroom');
