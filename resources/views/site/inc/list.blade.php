@@ -98,7 +98,7 @@
                                                 <h4><a href="property-details.html">{!! $data->title !!}</a></h4>
                                             </div>
                                             <div class="price-box clearfix">
-                                                <div class="price-info pull-left">
+                                                <div class="price-info pull-left d-none">
                                                     <h6>Start From</h6>
                                                     <h4>$40,000.00</h4>
                                                 </div>
@@ -108,6 +108,21 @@
                                                         <span>{!! $data->user->name !!}</span>
                                                     </figure>
                                                 </div>
+                                            </div>
+                                            <div class="price-box clearfix pt-3">
+                                                @if ($data->type_rent)
+                                                    <div class="price-info pull-left">
+                                                        <h6>Aluguel</h6>
+                                                        <h4>R$ {!! number_format($data->value_rent, 2) !!}</h4>
+                                                    </div>
+                                                @endif
+
+                                                @if ($data->type_buy)
+                                                    <div class="price-info  pull-right">
+                                                        <h6>Venda</h6>
+                                                        <h4>R$ {!! number_format($data->value_buy, 2) !!}</h4>
+                                                    </div>
+                                                @endif
                                             </div>
                                             <p>{!! $data->description !!}</p>
                                             <ul class="more-details clearfix">
