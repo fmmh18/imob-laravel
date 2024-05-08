@@ -59,6 +59,7 @@ class DatabaseSeeder extends Seeder
                 $route->getName() != 'index' &&
                 $route->getName() != 'fotos' &&
                 $route->getName() != 'detail' &&
+                $route->getName() != 'list' &&
                 $route->getName() != ''
             ) {
                 $module = Module::where('title', $route->getAction('module'))->get();
