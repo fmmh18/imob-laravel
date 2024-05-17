@@ -72,19 +72,24 @@
                         <ul class="side-nav-second-level">
 
                             <li>
+                                <a href="{!! route('dashboard.city.index') !!}"
+                                    @if (Auth::user()->is_manager != 1) class="d-none" @endif>Configurações do site</a>
+                            </li>
+                            <li>
                                 <a href="{!! route('dashboard.user.index') !!}"
-                                    @if (Auth::user()->is_manager != 1 || (Auth::user()->role_id != 2 && Auth::user()->role_id != 1)) class="d-none" @endif>Usuário</a>
+                                    @if (Auth::user()->is_manager != 1) class="d-none" @endif>Usuário</a>
                             </li>
 
                             <li>
                                 <a href="{!! route('dashboard.state.index') !!}"
-                                    @if (Auth::user()->is_manager != 1 || (Auth::user()->role_id != 2 && Auth::user()->role_id != 1)) class="d-none" @endif>Estado</a>
+                                    @if (Auth::user()->is_manager != 1) class="d-none" @endif>Estado</a>
                             </li>
 
                             <li>
                                 <a href="{!! route('dashboard.city.index') !!}"
-                                    @if (Auth::user()->is_manager != 1 || (Auth::user()->role_id != 2 && Auth::user()->role_id != 1)) class="d-none" @endif>Cidade</a>
+                                    @if (Auth::user()->is_manager != 1) class="d-none" @endif>Cidade</a>
                             </li>
+
                             {{-- <li>
                                 <a href="{!! route('dashboard.role.index') !!}"
                                     @if (Auth::user()->is_manager != 1 && Auth::user()->role_id != 1) class="d-none" @endif>Grupo de Usuário</a>

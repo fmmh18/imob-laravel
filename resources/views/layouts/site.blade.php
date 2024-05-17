@@ -82,6 +82,7 @@
                             <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                                 <ul class="navigation clearfix">
                                     <li><a href="{!! route('index') !!}"><span>Home</span></a></li>
+                                    <li><a href="{!! route('index') !!}"><span>Cadastro</span></a></li>
                                     <li class="d-none"><a href="contact.html"><span>Contato</span></a></li>
                                 </ul>
                             </div>

@@ -55,14 +55,10 @@ Route::group(['namespace' => 'dashboard', 'prefix' => 'dashboard'], function () 
             Route::get('/deletar/{id}', array('as' => 'dashboard.state.delete', 'uses' => '\App\Http\Controllers\dashboard\stateController@destroy', 'nickname' => "Deletar Estado", "groupname" => "Estado"));
         });
 
-        Route::group(['namespace' => 'Cidade', 'prefix' => 'cidade', 'module' => 'administration', 'modulename' => 'Administração'], function () {
+        Route::group(['namespace' => 'configuracao', 'prefix' => 'configuracao', 'module' => 'administration', 'modulename' => 'Administração'], function () {
             //USUARIO
-            Route::get('/listar', array('as' => 'dashboard.city.index', 'uses' => '\App\Http\Controllers\dashboard\cityController@index', 'nickname' => "Listar Cidades", "groupname" => "Cidade"));
-            Route::get('/adicionar', array('as' => 'dashboard.city.create', 'uses' => '\App\Http\Controllers\dashboard\cityController@create', 'nickname' => "Criar Cidade", "groupname" => "Cidade"));
-            Route::post('/adicionar', array('as' => 'dashboard.city.store', 'uses' => '\App\Http\Controllers\dashboard\cityController@store', 'nickname' => "Salvar Cidade", "groupname" => "Cidade"));
-            Route::get('/editar/{id}', array('as' => 'dashboard.city.show', 'uses' => '\App\Http\Controllers\dashboard\cityController@show', 'nickname' => "Visualizar Cidade", "groupname" => "Cidade"));
-            Route::put('/editar/{id}', array('as' => 'dashboard.city.update', 'uses' => '\App\Http\Controllers\dashboard\cityController@update', 'nickname' => "Editar Cidade", "groupname" => "Cidade"));
-            Route::get('/deletar/{id}', array('as' => 'dashboard.city.delete', 'uses' => '\App\Http\Controllers\dashboard\cityController@destroy', 'nickname' => "Deletar Cidade", "groupname" => "Cidade"));
+            Route::get('/configuracao', array('as' => 'dashboard.config.show', 'uses' => '\App\Http\Controllers\dashboard\configController@create', 'nickname' => "Criar Configuração", "groupname" => "Configuração"));
+            Route::post('/configuracao', array('as' => 'dashboard.config.store', 'uses' => '\App\Http\Controllers\dashboard\configController@store', 'nickname' => "Salvar Configuração", "groupname" => "Configuração"));
         });
 
 
