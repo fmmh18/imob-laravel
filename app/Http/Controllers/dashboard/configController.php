@@ -27,12 +27,13 @@ class configController extends dashboardController
 
         $data = Config::find(1);
 
-        if (!$data) {
-            $data = [];
-        } else {
-            $data = $data;
-        }
 
-        return view('config.form', ['data' => $data]);
+
+        return view('dashboard.config.form', ['data' => $data]);
+    }
+
+    public function store(Request $request)
+    {
+        dd($request->all());
     }
 }

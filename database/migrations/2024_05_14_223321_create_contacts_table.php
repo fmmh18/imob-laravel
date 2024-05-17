@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->integer('type')->nullable();
-            $table->logntext('message')->nullable();
+            $table->longtext('message')->nullable();
             $table->timestamps();
         });
     }
