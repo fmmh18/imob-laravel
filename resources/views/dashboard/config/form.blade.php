@@ -30,10 +30,10 @@
                     ]) !!}
                 @endif
                 <div class="row">
-                    <div class="col-12">{!! Form::label('name', 'Nome do Site', ['class' => 'col-form-label font-weight-bold']) !!}</div>
-                    <div class="col-12"> {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nome do Site']) !!}
-                        @if (!empty($errors->first('name')))
-                            <label class="invalid-feedback d-block">{!! $errors->first('name') !!}</label>
+                    <div class="col-12">{!! Form::label('title', 'Nome do Site', ['class' => 'col-form-label font-weight-bold']) !!}</div>
+                    <div class="col-12"> {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Nome do Site']) !!}
+                        @if (!empty($errors->first('title')))
+                            <label class="invalid-feedback d-block">{!! $errors->first('title') !!}</label>
                         @endif
                     </div>
                 </div>
@@ -61,8 +61,52 @@
                         @endif
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-12">{!! Form::label('lg_white', 'Logo', ['class' => 'col-form-label font-weight-bold']) !!}</div>
+                    <div class="col-12">
+                        <div class="input-group">
+                            <input type="file" class="form-control" name="lg_white" id="customFile">
+                        </div>
+                        @if (!empty($errors->first('lg_white')))
+                            <label class="invalid-feedback d-block">{!! $errors->first('lg_white') !!}</label>
+                        @endif
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">{!! Form::label('lg_white_sm', 'Logo Pequena', ['class' => 'col-form-label font-weight-bold']) !!}</div>
+                    <div class="col-12">
+                        <div class="input-group">
+                            <input type="file" class="form-control" name="lg_white_sm" id="customFile">
+                        </div>
+                        @if (!empty($errors->first('lg_white_sm')))
+                            <label class="invalid-feedback d-block">{!! $errors->first('lg_white_sm') !!}</label>
+                        @endif
+                    </div>
+                </div>
 
 
+                <div class="row">
+                    <div class="col-12">{!! Form::label('lg_dark', 'Logo Escura', ['class' => 'col-form-label font-weight-bold']) !!}</div>
+                    <div class="col-12">
+                        <div class="input-group">
+                            <input type="file" class="form-control" name="lg_dark" id="customFile">
+                        </div>
+                        @if (!empty($errors->first('lg_dark')))
+                            <label class="invalid-feedback d-block">{!! $errors->first('lg_dark') !!}</label>
+                        @endif
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">{!! Form::label('lg_dark_sm', 'Logo Pequena Escura', ['class' => 'col-form-label font-weight-bold']) !!}</div>
+                    <div class="col-12">
+                        <div class="input-group">
+                            <input type="file" class="form-control" name="lg_dark_sm" id="customFile">
+                        </div>
+                        @if (!empty($errors->first('lg_dark_sm')))
+                            <label class="invalid-feedback d-block">{!! $errors->first('lg_dark_sm') !!}</label>
+                        @endif
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-12 text-end pt-3">
                         <a href="{!! route('dashboard.feature.index') !!}" class="btn btn-secondary rounded-0">Voltar</a>
