@@ -187,7 +187,8 @@
                                     <li><i class="fas fa-microphone"></i><a href="tel:23055873407">+2(305)
                                             587-3407</a></li>
                                     <li><i class="fas fa-envelope"></i><a
-                                            href="mailto:info@example.com">info@example.com</a></li>
+                                            href="mailto:info@example.com">contato@villagenegociosimobiliario.com.br</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
