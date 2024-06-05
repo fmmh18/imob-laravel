@@ -198,7 +198,7 @@
         <div class="footer-bottom">
             <div class="auto-container">
                 <div class="inner-box clearfix">
-                    <figure class="footer-logo"><a href="{!! route('index') !!}"><img
+                    <figure class="footer-logo d-none"><a href="{!! route('index') !!}"><img
                                 src="{{ asset('assets/logo/logo_white.png') }}" alt=""></a></figure>
                     <div class="copyright pull-left">
                         <p><a href="index.html">Realshed</a> &copy; 2021 All Right Reserved</p>
