@@ -97,7 +97,7 @@
             <div class="outer-box">
                 <div class="main-box">
                     <div class="logo-box">
-                        <figure class="logo"><a href="index.html"><img src="{!! asset('assets/logo/logo_vision.webp') !!}"
+                        <figure class="logo"><a href="index.html"><img src="{!! asset('assets/logo/logo_white.png') !!}"
                                     alt=""></a></figure>
                     </div>
                     <div class="menu-area clearfix">
@@ -117,7 +117,7 @@
         <div class="close-btn"><i class="fas fa-times"></i></div>
 
         <nav class="menu-box">
-            <div class="nav-logo"><a href="index.html"><img src="{!! asset('assets/logo/logo_vision.webp') !!}" alt=""
+            <div class="nav-logo"><a href="index.html"><img src="{!! asset('assets/logo/logo_dark.png') !!}" alt=""
                         title=""></a></div>
             <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
             </div>
