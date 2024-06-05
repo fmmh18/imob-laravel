@@ -21,10 +21,10 @@
                                 <div class="d-flex flex-column h-100">
                                     <div class="auth-brand pt-4">
                                         <a href="#" class="logo-light">
-                                            <img src="/assets/logo/logo_vision.webp" alt="logo">
+                                            <img src="/assets/logo/logo_dark.png" alt="logo">
                                         </a>
                                         <a href="#" class="logo-dark text-center">
-                                            <img src="/assets/logo/logo_vision.webp" alt="logo" width="240"
+                                            <img src="/assets/logo/logo_dark.png" alt="logo" width="240"
                                                 height="100">
                                         </a>
                                     </div>

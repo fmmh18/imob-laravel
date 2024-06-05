@@ -68,7 +68,7 @@
             <div class="outer-box">
                 <div class="main-box">
                     <div class="logo-box">
-                        <figure class="logo"><a href="index.html"><img src="{!! asset('assets/logo/logo_vision.webp') !!}"
+                        <figure class="logo"><a href="index.html"><img src="{!! asset('assets/logo/logo_white.png') !!}"
                                     alt=""></a></figure>
                     </div>
                     <div class="menu-area clearfix">
@@ -199,7 +199,7 @@
             <div class="auto-container">
                 <div class="inner-box clearfix">
                     <figure class="footer-logo"><a href="{!! route('index') !!}"><img
-                                src="{{ asset('assets/logo/logo_vision.webp') }}" alt=""></a></figure>
+                                src="{{ asset('assets/logo/logo_white.png') }}" alt=""></a></figure>
                     <div class="copyright pull-left">
                         <p><a href="index.html">Realshed</a> &copy; 2021 All Right Reserved</p>
                     </div>
