@@ -58,7 +58,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="row d-none" id="rent">
+                <div class="row {!! isset($data->type_rent) ? $data->type_rent == '' : 'd-none' !!}" id="rent">
                     <div class="col-12">{!! Form::label('value_rent', 'Valor do Aluguel', ['class' => 'col-form-label font-weight-bold']) !!}</div>
                     <div class="col-12"> {!! Form::text('value_rent', null, [
                         'class' => 'form-control',
@@ -82,7 +82,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="row d-none" id="buy">
+                <div class="row {!! isset($data->type_buy) ? $data->type_buy == '' : 'd-none' !!}" id="buy">
                     <div class="col-12">{!! Form::label('value_buy', 'Valor de Venda', ['class' => 'col-form-label font-weight-bold']) !!}</div>
                     <div class="col-12"> {!! Form::text('value_buy', null, [
                         'class' => 'form-control',

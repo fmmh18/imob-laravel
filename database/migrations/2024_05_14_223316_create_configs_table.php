@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('logo')->nullable();
+            $table->longtext('about')->nullable();
             $table->string('logo_small')->nullable();
             $table->string('logo_dark')->nullable();
             $table->string('logo_small_dark')->nullable();

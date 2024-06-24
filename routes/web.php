@@ -45,6 +45,16 @@ Route::group(['namespace' => 'dashboard', 'prefix' => 'dashboard'], function () 
             Route::get('/deletar/{id}', array('as' => 'dashboard.user.delete', 'uses' => '\App\Http\Controllers\dashboard\userController@destroy', 'nickname' => "Deletar Usuário", "groupname" => "Usuário"));
         });
 
+        Route::group(['namespace' => 'Imagem', 'prefix' => 'imagem', 'module' => 'administration', 'modulename' => 'Administração'], function () {
+            //USUARIO
+            Route::get('/listar', array('as' => 'dashboard.carousel.index', 'uses' => '\App\Http\Controllers\dashboard\carouselController@index', 'nickname' => "Listar Imagens", "groupname" => "Imagem"));
+            Route::get('/adicionar', array('as' => 'dashboard.carousel.create', 'uses' => '\App\Http\Controllers\dashboard\carouselController@create', 'nickname' => "Criar Imagem", "groupname" => "Imagem"));
+            Route::post('/adicionar', array('as' => 'dashboard.carousel.store', 'uses' => '\App\Http\Controllers\dashboard\carouselController@store', 'nickname' => "Salvar Imagem", "groupname" => "Imagem"));
+            Route::get('/editar/{id}', array('as' => 'dashboard.carousel.show', 'uses' => '\App\Http\Controllers\dashboard\carouselController@show', 'nickname' => "Visualizar Imagem", "groupname" => "Imagem"));
+            Route::put('/editar/{id}', array('as' => 'dashboard.carousel.update', 'uses' => '\App\Http\Controllers\dashboard\carouselController@update', 'nickname' => "Editar Imagem", "groupname" => "Imagem"));
+            Route::get('/deletar/{id}', array('as' => 'dashboard.carousel.delete', 'uses' => '\App\Http\Controllers\dashboard\carouselController@destroy', 'nickname' => "Deletar Imagem", "groupname" => "Imagem"));
+        });
+
         Route::group(['namespace' => 'Estado', 'prefix' => 'estado', 'module' => 'administration', 'modulename' => 'Administração'], function () {
             //USUARIO
             Route::get('/listar', array('as' => 'dashboard.state.index', 'uses' => '\App\Http\Controllers\dashboard\stateController@index', 'nickname' => "Listar Estados", "groupname" => "Estado"));

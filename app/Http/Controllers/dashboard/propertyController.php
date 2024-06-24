@@ -82,7 +82,7 @@ class propertyController extends dashboardController
             if ($request->hasFile('fotos')) {
                 foreach ($request->file('fotos') as $foto) {
                     // Salvar a foto em algum lugar (por exemplo, no armazenamento público)
-                    $foto->store('/public/imovel/' . $data->id . '/');
+                    $foto->storeAs('imovel/' . $data->id . '/', 'public');
                 }
             }
 
@@ -141,7 +141,7 @@ class propertyController extends dashboardController
             if ($request->hasFile('fotos')) {
                 foreach ($request->file('fotos') as $foto) {
                     // Salvar a foto em algum lugar (por exemplo, no armazenamento público)
-                    $foto->store('public/imovel/' . $data->id . '/');
+                    $foto->storeAs('imovel/' . $data->id . '/', 'public');
                 }
             }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carousel;
 use App\Models\Config;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -14,7 +15,9 @@ class Controller extends BaseController
     public function __construct()
     {
         $config = Config::find(1);
+        $carousels = Carousel::where('active', 1)->get();
 
         \View::share('config', $config);
+        \View::share('carousels', $carousels);
     }
 }

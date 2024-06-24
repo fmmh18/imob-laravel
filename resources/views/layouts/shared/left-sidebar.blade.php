@@ -72,6 +72,10 @@
                         <ul class="side-nav-second-level">
 
                             <li>
+                                <a href="{!! route('dashboard.carousel.index') !!}"
+                                    @if (Auth::user()->is_manager != 1) class="d-none" @endif>Carousel</a>
+                            </li>
+                            <li>
                                 <a href="{!! route('dashboard.config.show') !!}"
                                     @if (Auth::user()->is_manager != 1) class="d-none" @endif>Configurações do site</a>
                             </li>
