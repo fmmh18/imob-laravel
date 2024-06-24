@@ -64,3 +64,15 @@ if (!function_exists('truncateNodeHtml')) {
         return $truncatedHtml;
     }
 }
+
+if (!function_exists('sanitizeString')) {
+    function sanitizeString($string)
+    {
+        // Remove espaços
+        $string = str_replace(' ', '', $string);
+        // Remove caracteres especiais
+        $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string);
+
+        return $string;
+    }
+}

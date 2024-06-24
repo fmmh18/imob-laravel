@@ -182,9 +182,9 @@
                                 <ul class="info-list clearfix">
                                     <li><i class="fas fa-map-marker-alt"></i>{!! $config->address ??
                                         'Flat 20, Reynolds Neck, North Helenaville,
-                                                                                                                FV77 8WS' !!}</li>
+                                                                                                                                                    FV77 8WS' !!}</li>
                                     <li><i class="fas fa-microphone"></i><a
-                                            href="tel:{!! $config->phone ?? '6598765-4321' !!}">{!! $config->phone ?? '(65) 98765-4321' !!}</a></li>
+                                            href="tel:{!! sanitizeString($config->phone) ?? '6598765-4321' !!}">{!! $config->phone ?? '(65) 98765-4321' !!}</a></li>
                                     <li><i class="fas fa-envelope"></i><a
                                             href="mailto:{!! $config->email ?? 'contato@villagenegociosimobiliario.com.br' !!}">{!! $config->email ?? 'contato@villagenegociosimobiliario.com.br' !!}</a>
                                     </li>
