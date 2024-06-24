@@ -11,7 +11,7 @@
             <div class="content-box clearfix">
                 <h1>Lista de Imóveis</h1>
                 <ul class="bread-crumb clearfix">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="/l">Home</a></li>
                     <li>Lista de Imóveis</li>
                 </ul>
             </div>

@@ -33,7 +33,7 @@
                     <div class="feature-block-one">
                         <div class="inner-box">
                             <div class="image-box">
-                                <figure class="image"><img src="{!! $primeiraImagem !!}" alt="">
+                                <figure class="image"><img src="{!! $primeiraImagem !!}" style="max-height:200px">
                                 </figure>
                                 <div class="batch d-none"><i class="icon-11"></i></div>
                                 <span class="category d-none">Featured</span>
