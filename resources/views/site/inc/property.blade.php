@@ -57,11 +57,11 @@
                                         </div>
                                     @endif
                                 </div>
-                                <p>{!! $property->description !!}</p>
+                                <p>{!! limitHtmlString($property->description, 120) !!}</p>
                                 <ul class="more-details clearfix">
                                     <li><i class="icon-14"></i>{!! $property->bedroom !!} {!! $property->bedroom == 1 ? 'Qto' : 'Qtos' !!}</li>
                                     <li><i class="icon-15"></i>{!! $property->bathroom !!} {!! $property->bedroom == 1 ? 'Bh' : 'Bhs' !!}</li>
-                                    <li><i class="icon-16"></i>{!! $property->area !!} m²</li>
+                                    <li><i class="icon-16"></i>{!! $property->area !!}²</li>
                                 </ul>
                                 <div class="btn-box"><a href="{!! route('detail', $property->id) !!}" class="theme-btn btn-two">Mais
                                         detalhes</a></div>
