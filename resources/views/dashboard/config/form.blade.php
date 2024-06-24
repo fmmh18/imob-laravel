@@ -108,6 +108,14 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-12">{!! Form::label('about', 'Sobre', ['class' => 'col-form-label font-weight-bold']) !!}</div>
+                    <div class="col-12"> {!! Form::textarea('about', null, ['class' => 'form-control', 'placeholder' => 'Sobre']) !!}
+                        @if (!empty($errors->first('about')))
+                            <label class="invalid-feedback d-block">{!! $errors->first('about') !!}</label>
+                        @endif
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-12 text-end pt-3">
                         <a href="{!! route('dashboard.feature.index') !!}" class="btn btn-secondary rounded-0">Voltar</a>
                         <button type="submit" class="btn btn-primary rounded-0"> Salvar</button>

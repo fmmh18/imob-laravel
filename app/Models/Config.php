@@ -12,6 +12,7 @@ class Config extends Model
     protected $fillable =
     [
         'title',
+        'about',
         'logo',
         'logo_small',
         'logo_dark',
