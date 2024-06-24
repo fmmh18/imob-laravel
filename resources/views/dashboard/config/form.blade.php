@@ -12,9 +12,9 @@
             <div class="card-body">
                 @if (isset($data))
                     {!! Form::model($data, [
-                        'method' => 'put',
+                        'method' => 'post',
                         'autocomplete' => false,
-                        'route' => ['dashboard.config.store', $data->id, http_build_query(Request::input())],
+                        'route' => ['dashboard.config.store', http_build_query(Request::input())],
                         'class' => $errors->any() ? 'was-validated' : '',
                         'novalidate',
                         'files' => true,
