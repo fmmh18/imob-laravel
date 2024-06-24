@@ -119,13 +119,13 @@
 
                         <div class="location-box content-widget">
                             <div class="title-box">
-                                <h4>Location</h4>
+                                <h4>Localização</h4>
                             </div>
                             <ul class="info clearfix">
                                 <li><span>Endereço:</span> {!! $data->address !!}</li>
                                 <li><span>Estado:</span> {!! $data->state->name !!}</li>
                                 <li><span>Bairro:</span> {!! $data->neighborhood !!}</li>
-                                <li><span>City:</span> {!! $data->city->name !!}</li>
+                                <li><span>Cidade:</span> {!! $data->city->name !!}</li>
                             </ul>
                             <div class="google-map-area" style="display: none">
                                 <div class="google-map" id="contact-google-map" data-map-lat="40.712776"
