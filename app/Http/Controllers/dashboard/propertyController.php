@@ -50,9 +50,7 @@ class propertyController extends dashboardController
         $allCities = City::all()->pluck('name', 'id');
         $allTypes = Type::all()->pluck('name', 'id');
         $allFeatures = Feature::all()->pluck('name', 'id');
-        $allUsers = User::where('is_manager',1)->get()->pluck('name','id');
-
-
+        $allUsers = User::where('is_manager', 1)->get()->pluck('name', 'id');
 
         \Config::set('layout.titulo', 'Criar');
         return view('dashboard.property.form', ['allStates' => $allStates, 'allCities' => $allCities, 'allTypes' => $allTypes, 'allFeatures' => $allFeatures, 'allUsers' => $allUsers]);
@@ -70,17 +68,15 @@ class propertyController extends dashboardController
             'value_rent' => str_replace(array(','), '.', $value_rent),
             'value_buy' => str_replace(array(','), '.', $value_buy)
         ));
-
         try {
 
             $data = Property::create($request->all());
-
             $data->features()->sync(($request->input('feature') == null) ? [] : $request->input('feature'));
 
             if ($request->hasFile('fotos')) {
                 foreach ($request->file('fotos') as $foto) {
                     // Salvar a foto em algum lugar (por exemplo, no armazenamento público)
-                    $foto->store('public/imovel/' . $data->id . '/');
+                    $foto->store('/public/imovel/' . $data->id . '/');
                 }
             }
 
@@ -103,11 +99,11 @@ class propertyController extends dashboardController
         $allCities = City::all()->pluck('name', 'id');
         $allTypes = Type::all()->pluck('name', 'id');
         $allFeatures = Feature::all()->pluck('name', 'id');
-        $allUsers = User::where('is_manager',1)->get()->pluck('name','id');
+        $allUsers = User::where('is_manager', 1)->get()->pluck('name', 'id');
 
         \Config::set('layout.titulo', 'Editar');
 
-        return view('dashboard.property.form', ['data' => $data, 'allStates' => $allStates, 'allCities' => $allCities, 'allTypes' => $allTypes, 'allFeatures' => $allFeatures,'allUsers' => $allUsers]);
+        return view('dashboard.property.form', ['data' => $data, 'allStates' => $allStates, 'allCities' => $allCities, 'allTypes' => $allTypes, 'allFeatures' => $allFeatures, 'allUsers' => $allUsers]);
     }
 
     public function update(Request $request, $id)

@@ -16,7 +16,6 @@ class Property extends Model
         'value_buy',
         'type_rent',
         'type_buy',
-        'city_id',
         'state_id',
         'type_id',
         'bedroom',
@@ -26,7 +25,7 @@ class Property extends Model
         'address',
         'neighborhood',
         'city_id',
-        'state_id'
+        'user_id'
     ];
 
 
