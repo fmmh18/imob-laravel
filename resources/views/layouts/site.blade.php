@@ -68,7 +68,7 @@
             <div class="outer-box">
                 <div class="main-box">
                     <div class="logo-box">
-                        <figure class="logo"><a href="index.html"><img src="{!! asset('assets/logo/logo_white.png') !!}" alt=""
+                        <figure class="logo"><a href="/"><img src="{!! asset('assets/logo/logo_white.png') !!}" alt=""
                                     style="width: 65%"></a></figure>
                     </div>
                     <div class="menu-area clearfix">
@@ -97,7 +97,7 @@
             <div class="outer-box">
                 <div class="main-box">
                     <div class="logo-box">
-                        <figure class="logo"><a href="index.html"><img src="{!! asset('assets/logo/logo_dark.png') !!}" alt=""
+                        <figure class="logo"><a href="/"><img src="{!! asset('assets/logo/logo_dark.png') !!}" alt=""
                                     style="width: 65%"></a></figure>
                     </div>
                     <div class="menu-area clearfix">

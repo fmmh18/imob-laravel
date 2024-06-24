@@ -153,7 +153,7 @@
                                             St Johns Wood</li>
                                         <li><i class="fas fa-phone"></i><a href="tel:{!! $data->user->phone !!}">{!! $data->user->phone !!}</a></li>
                                     </ul>
-                                    <div class="btn-box d-nones"><a href="agents-details.html">View Listing</a></div>
+                                    <div class="btn-box d-none"><a href="agents-details.html">View Listing</a></div>
                                 </div>
                             </div>
                             <div class="form-inner d-none">
