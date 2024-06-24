@@ -50,10 +50,9 @@
                         <thead class="table-dark text-uppercase">
                             <tr>
                                 <th><strong>id</strong></th>
-                                <th><strong>Nome</strong></th>
-                                <th><strong>Email</strong></th>
+                                <th><strong>Título</strong></th>
+                                <th><strong>Sub Título</strong></th>
                                 <th><strong>Status</strong></th>
-                                <th><strong>Administrador</strong></th>
                                 <th colspan="2" width="2%" class="text-center">&nbsp;</th>
                             </tr>
                         </thead>
