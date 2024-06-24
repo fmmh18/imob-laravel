@@ -114,8 +114,26 @@ class propertyController extends dashboardController
 
     public function update(Request $request, $id)
     {
+
+        if ($request->input('type_rent') == 'on') {
+            $value_rent = str_replace(array('.'), '', $request->input('value_rent'));
+            $request->merge(array(
+                'type_rent' => ($request->input('type_rent') == 'on' ? 1 : 2),
+                'value_rent' => str_replace(array(','), '.', $value_rent)
+            ));
+        }
+        if ($request->input('type_buy') == 'on') {
+            $value_buy = str_replace(array('.'), '', $request->input('value_buy'));
+            $request->merge(array(
+                'type_buy' => ($request->input('type_buy') == 'on' ? 1 : 2),
+                'value_buy' => str_replace(array(','), '.', $value_buy)
+            ));
+        }
+
         try {
             $data = Property::find($id);
+
+            $data->update($request->all());
 
             $data->features()->sync(($request->input('feature') == null) ? [] : $request->input('feature'));
 
