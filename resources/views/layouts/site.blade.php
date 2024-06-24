@@ -155,9 +155,7 @@
                                 <h3>Sobre</h3>
                             </div>
                             <div class="text">
-                                <p>Lorem ipsum dolor amet consetetur adi pisicing elit sed eiusm tempor in cididunt ut
-                                    labore dolore magna aliqua enim ad minim venitam</p>
-                                <p>Quis nostrud exercita laboris nisi ut aliquip commodo.</p>
+                                {!! $config->about ?? 'Conte sobre a empresa' !!}
                             </div>
                         </div>
                     </div>
@@ -182,12 +180,13 @@
                             </div>
                             <div class="widget-content">
                                 <ul class="info-list clearfix">
-                                    <li><i class="fas fa-map-marker-alt"></i>Flat 20, Reynolds Neck, North Helenaville,
-                                        FV77 8WS</li>
-                                    <li><i class="fas fa-microphone"></i><a href="tel:23055873407">+2(305)
-                                            587-3407</a></li>
+                                    <li><i class="fas fa-map-marker-alt"></i>{!! $config->address ??
+                                        'Flat 20, Reynolds Neck, North Helenaville,
+                                                                                                                FV77 8WS' !!}</li>
+                                    <li><i class="fas fa-microphone"></i><a
+                                            href="tel:{!! $config->phone ?? '6598765-4321' !!}">{!! $config->phone ?? '(65) 98765-4321' !!}</a></li>
                                     <li><i class="fas fa-envelope"></i><a
-                                            href="mailto:info@example.com">contato@villagenegociosimobiliario.com.br</a>
+                                            href="mailto:{!! $config->email ?? 'contato@villagenegociosimobiliario.com.br' !!}">{!! $config->email ?? 'contato@villagenegociosimobiliario.com.br' !!}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -202,11 +201,12 @@
                     <figure class="footer-logo d-none"><a href="{!! route('index') !!}"><img
                                 src="{{ asset('assets/logo/logo_white.png') }}" alt=""></a></figure>
                     <div class="copyright pull-left">
-                        <p><a href="index.html">Realshed</a> &copy; 2021 All Right Reserved</p>
+                        <p><a href="/">{!! $config->title ?? 'Village Negócios Imobiliário' !!}</a> &copy; {!! date('Y') !!} All Right
+                            Reserved</p>
                     </div>
                     <ul class="footer-nav pull-right clearfix">
-                        <li><a href="index.html">Termo de Serviço</a></li>
-                        <li><a href="index.html">Política de Privacidade</a></li>
+                        <li><a href="/">Termo de Serviço</a></li>
+                        <li><a href="/">Política de Privacidade</a></li>
                     </ul>
                 </div>
             </div>
