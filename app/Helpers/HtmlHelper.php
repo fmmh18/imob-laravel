@@ -71,7 +71,7 @@ if (!function_exists('sanitizeString')) {
         // Remove espaços
         $string = str_replace(' ', '', $string);
         // Remove caracteres especiais
-        $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string);
+        $string = preg_replace('/[^A-Za-z0-9]/', '', $string);
 
         return $string;
     }
