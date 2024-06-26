@@ -15,14 +15,16 @@ class indexController extends Controller
 
     public function index(Request $request)
     {
-        $allProperties = Property::limit(12)->get();
+        $allPropertiesRent = Property::where('type_rent', 1)->limit(12)->get();
+        $allPropertiesBuy = Property::where('type_buy', 1)->limit(12)->get();
         $allCities = City::join('properties', 'cities.id', '=', 'properties.city_id')
             ->select('cities.id AS id', 'cities.name AS name')
             ->distinct()
             ->get();
         $allTypes = Type::all();
         return view('site.index', [
-            'allProperties' => $allProperties,
+            'allPropertiesBuy' => $allPropertiesBuy,
+            'allPropertiesRent' => $allPropertiesRent,
             'allCities' => $allCities,
             'allTypes' => $allTypes
         ]);
