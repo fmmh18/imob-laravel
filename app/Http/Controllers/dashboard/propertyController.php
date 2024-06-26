@@ -85,6 +85,7 @@ class propertyController extends dashboardController
                     $foto->storeAs('imovel/' . $data->id . '/', 'public');
                 }
             }
+            $this->aplicarPermissoesRecursivamente('imovel/' . $data->id, 0775);
 
             Alert::success('Propriedade', 'Cadastrada realizado com sucesso!');
         } catch (Exception $e) {
@@ -143,6 +144,8 @@ class propertyController extends dashboardController
                     // Salvar a foto em algum lugar (por exemplo, no armazenamento público)
                     $foto->storeAs('imovel/' . $data->id . '/', 'public');
                 }
+
+                $this->aplicarPermissoesRecursivamente('imovel/' . $data->id, 0775);
             }
 
             Alert::success('Propriedade', 'Atualizado realizado com sucesso!');
@@ -163,5 +166,16 @@ class propertyController extends dashboardController
         }
 
         return redirect(route("dashboard.property.index"));
+    }
+    private function aplicarPermissoesRecursivamente($path, $permissions)
+    {
+        $dir = new \RecursiveDirectoryIterator($path, \RecursiveDirectoryIterator::SKIP_DOTS);
+        $iterator = new \RecursiveIteratorIterator($dir, \RecursiveIteratorIterator::SELF_FIRST);
+
+        foreach ($iterator as $item) {
+            chmod($item, $permissions);
+        }
+
+        chmod($path, $permissions);
     }
 }
