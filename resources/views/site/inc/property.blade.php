@@ -51,7 +51,8 @@
                                     @endif
 
                                     @if ($property->type_buy)
-                                        <div class="price-info  pull-left ml-5">
+                                        <div
+                                            class="price-info  pull-left @if ($property->type_rent) ml-5 @endif">
                                             <h6>Venda</h6>
                                             <h4>R$ {!! number_format($property->value_buy, 2) !!}</h4>
                                         </div>
@@ -135,7 +136,8 @@
                                     @endif
 
                                     @if ($property->type_buy)
-                                        <div class="price-info  pull-left ml-5">
+                                        <div
+                                            class="price-info  pull-left @if ($property->type_rent) ml-5 @endif">
                                             <h6>Venda</h6>
                                             <h4>R$ {!! number_format($property->value_buy, 2) !!}</h4>
                                         </div>
