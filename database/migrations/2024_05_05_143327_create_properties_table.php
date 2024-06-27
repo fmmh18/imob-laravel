@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('bathroom');
             $table->string('area');
             $table->integer('publish')->default(0);
+            $table->integer('counts')->default(0);
             $table->timestamps();
         });
     }

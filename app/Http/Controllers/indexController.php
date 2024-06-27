@@ -61,6 +61,9 @@ class indexController extends Controller
     {
 
         $data = Property::find($id);
+
+        $data->counts = ($data->counts + 1) /
+            $data->save();
         return view('site.detail', [
             'data' => $data
         ]);

@@ -25,7 +25,8 @@ class Property extends Model
         'address',
         'neighborhood',
         'city_id',
-        'user_id'
+        'user_id',
+        'counts'
     ];
 
 
