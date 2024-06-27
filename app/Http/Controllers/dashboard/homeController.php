@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\dashboardController;
+use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,6 +24,10 @@ class homeController extends dashboardController
 
     public function index(Request $request)
     {
-        return view('dashboard.home');
+
+        $allProperties = Property::all();
+        return view('dashboard.home', [
+            'allProperties' => $allProperties
+        ]);
     }
 }
