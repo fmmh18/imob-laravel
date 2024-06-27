@@ -6,7 +6,7 @@
             <h2>Venda</h2>
         </div>
         <div class="row">
-            @forelse ($allPropertiesBuy as $property)
+            @forelse ($allProperties->where('type_buy',1) as $property)
                 @php
                     $diretorio = public_path('storage/imovel/' . $property->id . '/');
                     $primeiraImagem = null;
@@ -91,7 +91,7 @@
             <h2>Aluguel</h2>
         </div>
         <div class="row">
-            @forelse ($allPropertiesRent as $property)
+            @forelse ($allProperties->where('type_rent',1) as $property)
                 @php
                     $diretorio = public_path('storage/imovel/' . $property->id . '/');
                     $primeiraImagem = null;
