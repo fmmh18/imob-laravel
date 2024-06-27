@@ -25,7 +25,11 @@ class homeController extends dashboardController
     public function index(Request $request)
     {
 
-        $allProperties = Property::all();
+        $allProperties = Property::orderBy('created_at', 'desc');
+        if (Auth::user()->is_manager == 0) {
+            $allProperties = $allProperties->where('user_id', Auth::user()->id);
+        }
+        $allProperties = $allProperties->get();
         return view('dashboard.home', [
             'allProperties' => $allProperties
         ]);
