@@ -14,9 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\indexController::class, 'index'])->name('index');
+Route::get('/quem-somos', [\App\Http\Controllers\indexController::class, 'about'])->name('about');
+Route::get('/contato', [\App\Http\Controllers\indexController::class, 'contact'])->name('contact');
 Route::get('/imovel/listar', [\App\Http\Controllers\indexController::class, 'list'])->name('list');
 Route::get('/imovel/{id}', [\App\Http\Controllers\indexController::class, 'detail'])->name('detail');
 Route::get('/foto/{id}', [\App\Http\Controllers\indexController::class, 'primeiroArquivo'])->name('fotos');
+Route::post('/salvar/lead', [\App\Http\Controllers\indexController::class, 'storeLead'])->name('lead-store');
+Route::post('/salvar/contato', [\App\Http\Controllers\indexController::class, 'storeContact'])->name('contact-store');
 
 route::get('/login', function () {
     return redirect(route('login'));
@@ -94,7 +98,7 @@ Route::group(['namespace' => 'dashboard', 'prefix' => 'dashboard'], function () 
         });
 
         Route::group(['namespace' => 'Característica do Imóvel', 'prefix' => 'caracteristica-do-imovel', 'module' => 'administration', 'modulename' => 'Imovel'], function () {
-            //USUARIO
+            //CARACTERISTICAS
             Route::get('/listar', array('as' => 'dashboard.feature.index', 'uses' => '\App\Http\Controllers\dashboard\featureController@index', 'nickname' => "Listar Características do Imóveis", "groupname" => "Característica do Imóvel"));
             Route::get('/adicionar', array('as' => 'dashboard.feature.create', 'uses' => '\App\Http\Controllers\dashboard\featureController@create', 'nickname' => "Criar Característica do Imóvel", "groupname" => "Característica do Imóvel"));
             Route::post('/adicionar', array('as' => 'dashboard.feature.store', 'uses' => '\App\Http\Controllers\dashboard\featureController@store', 'nickname' => "Salvar Característica do Imóvel", "groupname" => "Característica do Imóvel"));
@@ -104,7 +108,7 @@ Route::group(['namespace' => 'dashboard', 'prefix' => 'dashboard'], function () 
         });
 
         Route::group(['namespace' => 'Imóvel', 'prefix' => 'imovel', 'module' => 'administration', 'modulename' => 'Imovel'], function () {
-            //USUARIO
+            //IMOVEL
             Route::get('/listar', array('as' => 'dashboard.property.index', 'uses' => '\App\Http\Controllers\dashboard\propertyController@index', 'nickname' => "Imóveis", "groupname" => "Imóvel"));
             Route::get('/adicionar', array('as' => 'dashboard.property.create', 'uses' => '\App\Http\Controllers\dashboard\propertyController@create', 'nickname' => "Criar Imóvel", "groupname" => "Imóvel"));
             Route::post('/adicionar', array('as' => 'dashboard.property.store', 'uses' => '\App\Http\Controllers\dashboard\propertyController@store', 'nickname' => "Salvar Imóvel", "groupname" => "Imóvel"));
@@ -112,5 +116,16 @@ Route::group(['namespace' => 'dashboard', 'prefix' => 'dashboard'], function () 
             Route::put('/editar/{id}', array('as' => 'dashboard.property.update', 'uses' => '\App\Http\Controllers\dashboard\propertyController@update', 'nickname' => "Editar Imóvel", "groupname" => "Imóvel"));
             Route::get('/deletar/{id}', array('as' => 'dashboard.property.delete', 'uses' => '\App\Http\Controllers\dashboard\propertyController@destroy', 'nickname' => "Deletar Imóvel", "groupname" => "Imóvel"));
         });
+    });
+    Route::group(['namespace' => 'Conteúdo', 'prefix' => 'conteudo', 'module' => 'content', 'modulename' => 'conteudo'], function () {
+        //CONTEUDO
+        Route::get('/editar/{slug}', array('as' => 'dashboard.page.show', 'uses' => '\App\Http\Controllers\dashboard\pageController@show', 'nickname' => "Visualizar Conteúdo", "groupname" => "Conteúdo"));
+        Route::put('/editar/{id}', array('as' => 'dashboard.page.update', 'uses' => '\App\Http\Controllers\dashboard\pageController@update', 'nickname' => "Editar Conteúdo", "groupname" => "Conteúdo"));
+    });
+    Route::group(['namespace' => 'Contato', 'prefix' => 'contato', 'module' => 'content', 'modulename' => 'conteudo'], function () {
+        //CONTEUDO
+        Route::get('/listar/{type}', array('as' => 'dashboard.contact.index', 'uses' => '\App\Http\Controllers\dashboard\contactController@index', 'nickname' => "Contatos", "groupname" => "Contato"));
+        Route::get('/editar/{type}/{id}', array('as' => 'dashboard.contact.show', 'uses' => '\App\Http\Controllers\dashboard\contactController@show', 'nickname' => "Visualizar Contato", "groupname" => "Contato"));
+        Route::put('/editar/{type}/{id}', array('as' => 'dashboard.contact.update', 'uses' => '\App\Http\Controllers\dashboard\contactController@update', 'nickname' => "Editar Contato", "groupname" => "Contato"));
     });
 });

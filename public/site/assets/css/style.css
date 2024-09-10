@@ -9749,3 +9749,64 @@ div#mCSB_1_container {
 .search-field .top-search .search-btn button i {
     margin-right: 8px;
 }
+
+
+.floating-buttons {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.floating-buttons {
+    position: fixed;
+    bottom: 160px;
+    /* Ajuste a posição a partir da parte inferior */
+    right: 30px;
+    /* Ajuste a posição a partir da direita */
+    z-index: 1000;
+    /* Coloque um z-index alto para garantir que fique acima de outros elementos */
+}
+
+.floating-buttons .whatsapp-btn {
+    display: block;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    /* Cor característica do WhatsApp */
+    color: white;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    line-height: 60px;
+    font-size: 30px;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.floating-buttons .whatsapp-btn:hover {
+    background-color: #1DA851;
+    /* Cor ao passar o mouse */
+}
+
+.floating-buttons .contact-btn {
+    display: block;
+    width: 60px;
+    height: 60px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    line-height: 60px;
+    font-size: 30px;
+    transition: background-color 0.3s ease;
+}
+
+.floating-buttons .contact-btn:hover {
+    background-color: #0056b3;
+    /* Cor ao passar o mouse */
+}

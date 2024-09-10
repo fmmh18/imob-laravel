@@ -62,6 +62,30 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-12">{!! Form::label('whatsapp', 'Whatsapp', ['class' => 'col-form-label font-weight-bold']) !!}</div>
+                    <div class="col-12"> {!! Form::text('whatsapp', null, ['class' => 'form-control', 'placeholder' => 'Whatsapp']) !!}
+                        @if (!empty($errors->first('whatsapp')))
+                            <label class="invalid-feedback d-block">{!! $errors->first('whatsapp') !!}</label>
+                        @endif
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">{!! Form::label('facebook', 'Facebook', ['class' => 'col-form-label font-weight-bold']) !!}</div>
+                    <div class="col-12"> {!! Form::text('facebook', null, ['class' => 'form-control', 'placeholder' => 'Facebook']) !!}
+                        @if (!empty($errors->first('facebook')))
+                            <label class="invalid-feedback d-block">{!! $errors->first('facebook') !!}</label>
+                        @endif
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">{!! Form::label('instagram', 'Instagram', ['class' => 'col-form-label font-weight-bold']) !!}</div>
+                    <div class="col-12"> {!! Form::text('instagram', null, ['class' => 'form-control', 'placeholder' => 'Instagram']) !!}
+                        @if (!empty($errors->first('instagram')))
+                            <label class="invalid-feedback d-block">{!! $errors->first('instagram') !!}</label>
+                        @endif
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-12">{!! Form::label('lg_white', 'Logo', ['class' => 'col-form-label font-weight-bold']) !!}</div>
                     <div class="col-12">
                         <div class="input-group">

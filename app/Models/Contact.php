@@ -15,6 +15,10 @@ class Contact extends Model
         'phone',
         'email',
         'type',
-        'message'
+        'message',
+        'whatsapp',
+        'return',
+        'response',
+        'subject'
     ];
 }

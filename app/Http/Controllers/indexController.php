@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
+use App\Models\Contact;
+use App\Models\Pages;
 use App\Models\Property;
 use App\Models\Type;
+use Exception;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
+use App\Rules\ReCaptcha;
 
 class indexController extends Controller
 {
@@ -25,6 +30,15 @@ class indexController extends Controller
             'allProperties' => $allProperties,
             'allCities' => $allCities,
             'allTypes' => $allTypes
+        ]);
+    }
+
+    public function about()
+    {
+
+        $data = Pages::where('slug', 'quem-somos')->first();
+        return view('site.page', [
+            'data' => $data
         ]);
     }
 
@@ -87,5 +101,65 @@ class indexController extends Controller
         } else {
             return 'Não há fotos disponíveis para esta propriedade';
         }
+    }
+
+    public function storeLead(Request $request)
+    {
+
+        $validator = Validator::make($request->input(), [
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'g-recaptcha-response' => ['required', new ReCaptcha]
+        ]);
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput()
+                ->with('openModal', true); // Passa a variável para indicar que o modal deve ser aberto
+
+        }
+
+        $request->merge(['type' => 2]);
+        try {
+            Contact::create($request->all());
+            Alert::success('Contato', 'Contato realizado com sucesso!');
+        } catch (Exception $e) {
+
+            Alert::error('Contato', 'Contato  não cadastrado!');
+        }
+        return redirect(route('index'));
+    }
+
+    public function contact()
+    {
+        return view('site.contact');
+    }
+
+    public function storeContact(Request $request)
+    {
+        $validator = Validator::make($request->input(), [
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'g-recaptcha-response' => ['required', new ReCaptcha]
+        ]);
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $request->merge(['type' => 1]);
+        try {
+            Contact::create($request->all());
+            Alert::success('Contato', 'Contato realizado com sucesso!');
+        } catch (Exception $e) {
+
+            Alert::error('Contato', 'Contato  não cadastrado!');
+        }
+        return redirect(route('contact'));
     }
 }

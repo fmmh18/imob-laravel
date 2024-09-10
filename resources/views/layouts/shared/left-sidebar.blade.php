@@ -32,7 +32,31 @@
                     <span> Dashboard </span>
                 </a>
             </li>
-
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarContentFinancial" aria-expanded="false"
+                    aria-controls="sidebarContentFinancial" class="side-nav-link">
+                    <i class="ri-bank-line"></i>
+                    <span> Conteudo </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarContentFinancial">
+                    <ul class="side-nav-second-level">
+                        {{-- <li>
+                            <a href="#">Dashboard</a>
+                        </li> --}}
+                        <li>
+                            <a href="{!! route('dashboard.page.show', 'quem-somos') !!}">Quem Somos</a>
+                        </li>
+                        <li>
+                            <a href="{!! route('dashboard.contact.index', 'lead') !!}">Leads</a>
+                        </li>
+                        <li>
+                            <a href="{!! route('dashboard.contact.index', 'contato') !!}">Fale Conosco</a>
+                        </li>
+                        <li>
+                    </ul>
+                </div>
+            </li>
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarPagesFinancial" aria-expanded="false"
                     aria-controls="sidebarPagesFinancial" class="side-nav-link">
