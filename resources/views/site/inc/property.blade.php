@@ -90,7 +90,7 @@
                                         }
                                     @endphp
 
-                                    <div class="col-4 my-4">
+                                    <div class="col-12 col-md-4 col-lg-4 my-4">
                                         <div class="feature-block-one">
                                             <div class="inner-box">
                                                 <div class="image-box">
