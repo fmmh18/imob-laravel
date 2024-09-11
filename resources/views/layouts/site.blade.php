@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <meta name="theme-color" content="#6777ef" />
+    <link rel="apple-touch-icon" href="{{ asset('assets/logo/logo_white.png') }}">
+    <link rel="manifest" href="{{ asset('/manifest.json') }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Fav Icon -->
     <link rel="icon" href="{!! asset('site/assets/images/favicon.ico') !!}" type="image/x-icon">
@@ -129,7 +132,7 @@
                 <ul>
                     <li><i class="fas fa-map-marker-alt"></i>{!! $config->address ??
                         'Flat 20, Reynolds Neck, North Helenaville,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    FV77 8WS' !!}</li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            FV77 8WS' !!}</li>
                     <li><i class="fas fa-microphone"></i><a
                             href="tel:{!! sanitizeString($config->phone) ?? '6598765-4321' !!}">{!! $config->phone ?? '(65) 98765-4321' !!}</a></li>
                     <li><i class="fas fa-envelope"></i><a
@@ -191,7 +194,7 @@
                                 <ul class="info-list clearfix">
                                     <li><i class="fas fa-map-marker-alt"></i>{!! $config->address ??
                                         'Flat 20, Reynolds Neck, North Helenaville,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        FV77 8WS' !!}</li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                FV77 8WS' !!}</li>
                                     <li><i class="fas fa-microphone"></i><a
                                             href="tel:{!! sanitizeString($config->phone) ?? '6598765-4321' !!}">{!! $config->phone ?? '(65) 98765-4321' !!}</a></li>
                                     <li><i class="fas fa-envelope"></i><a
@@ -328,6 +331,23 @@
             });
         </script>
     @endif
+    <script src="{{ asset('/sw.js') }}"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            // Register a service worker hosted at the root of the
+            // site using the default scope.
+            navigator.serviceWorker.register("/sw.js").then(
+                (registration) => {
+                    console.log("Service worker registration succeeded:", registration);
+                },
+                (error) => {
+                    console.error(`Service worker registration failed: ${error}`);
+                },
+            );
+        } else {
+            console.error("Service workers are not supported.");
+        }
+    </script>
 </body>
 
 </html>
