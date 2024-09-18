@@ -63,7 +63,9 @@
                         <div class="deals-list-content list-item">
                             @forelse ($allProperties as $data)
                                 @php
-                                    $diretorio = public_path('storage/imovel/' . $data->id . '/');
+                                    // $diretorio = asset('storage/imovel/' . $data->id . '/');
+                                    $diretorio = base_path('public_html/storage/imovel/' . $data->id);
+
                                     $primeiraImagem = null;
 
                                     // Verifica se o diretório existe

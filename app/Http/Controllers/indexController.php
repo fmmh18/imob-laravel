@@ -83,7 +83,7 @@ class indexController extends Controller
 
     public function primeiroArquivo($id)
     {
-        $diretorio = public_path('storage/imovel/' . $id . '/'); // Diretório onde as fotos estão armazenadas
+        $diretorio = asset('storage/imovel/' . $id . '/'); // Diretório onde as fotos estão armazenadas
 
         // Verifica se o diretório existe
         if (!File::isDirectory($diretorio)) {

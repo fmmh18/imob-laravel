@@ -82,10 +82,12 @@ class propertyController extends dashboardController
             if ($request->hasFile('fotos')) {
                 foreach ($request->file('fotos') as $foto) {
                     // Salvar a foto em algum lugar (por exemplo, no armazenamento público)
-                    $foto->store('/public/imovel/' . $data->id . '/');
+                    $path = base_path('public_html/storage/imovel/' . $data->id . '/');
+
+                    mkdir($path, 0775, true);
+                    $foto->move($path, $foto->getClientOriginalName());
                 }
             }
-            $this->aplicarPermissoesRecursivamente('imovel/' . $data->id, 0775);
 
             Alert::success('Propriedade', 'Cadastrada realizado com sucesso!');
         } catch (Exception $e) {
@@ -142,10 +144,11 @@ class propertyController extends dashboardController
             if ($request->hasFile('fotos')) {
                 foreach ($request->file('fotos') as $foto) {
                     // Salvar a foto em algum lugar (por exemplo, no armazenamento público)
-                    $foto->store('/public/imovel/' . $data->id . '/');
-                }
+                    $path = base_path('public_html/storage/imovel/' . $data->id . '/');
 
-                $this->aplicarPermissoesRecursivamente('imovel/' . $data->id, 0775);
+                    mkdir($path, 0775, true);
+                    $foto->move($path, $foto->getClientOriginalName());
+                }
             }
 
             Alert::success('Propriedade', 'Atualizado realizado com sucesso!');

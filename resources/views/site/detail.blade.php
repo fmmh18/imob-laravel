@@ -62,7 +62,7 @@
                             <div class="single-item-carousel owl-carousel owl-theme owl-dots-none">
 
                                 @php
-                                    $diretorio = public_path('storage/imovel/' . $data->id . '/');
+                                     $diretorio = base_path('public_html/storage/imovel/' . $data->id);
 
                                     if (is_dir($diretorio)) {
                                         // Obtém todos os arquivos do diretório

@@ -67,7 +67,9 @@
                             <div class="row">
                                 @forelse ($allProperties as $property)
                                     @php
-                                        $diretorio = public_path('storage/imovel/' . $property->id . '/');
+                                        $diretorio = base_path('public_html/storage/imovel/' . $property->id);
+
+                                        //    $diretorio = asset('storage/imovel/' . $property->id . '/');
                                         $primeiraImagem = null;
 
                                         // Verifica se o diretório existe
