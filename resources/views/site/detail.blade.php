@@ -1,6 +1,21 @@
 @extends('layouts.site')
 
 @section('content')
+<style>
+    .image-box figure {
+        height: 100%;
+        width: 100%;
+    }
+
+    .image-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* Faz a imagem preencher o contêiner e cortar o excesso */
+        object-position: center;
+        /* Centraliza a imagem dentro do contêiner */
+    }
+</style>
     <!--Page Title-->
     <section class="page-title-two bg-color-1 centred">
         <div class="pattern-layer">
@@ -11,7 +26,7 @@
             <div class="content-box clearfix">
                 <h1>{!! $data->title !!}</h1>
                 <ul class="bread-crumb clearfix">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{!! route('index') !!}">Home</a></li>
                     <li>{!! $data->title !!}</li>
                 </ul>
             </div>
@@ -46,10 +61,10 @@
                         </ul>
                         <div class="price-box pull-right">
                             @if ($data->type_rent)
-                            <h3>R$ {!! number_format($data->value_rent, 2) !!}</h3>
+                            <h3>R$ {!! number_format($data->value_rent, 2, ',', '.') !!}</h3>
                             @endif
                             @if ($data->type_buy)
-                            <h3>R$ {!! number_format($data->value_buy, 2) !!}</h3>
+                            <h3>R$ {!! number_format($data->value_buy, 2, ',', '.') !!}</h3>
                             @endif
                         </div>
                     </div>
@@ -77,7 +92,7 @@
                                         src="{{ asset(
                                                     'storage/imovel/' . $data->id . '/' . $arquivo,
                                                 ) }}"
-                                        alt="">
+                                        style="width:770px;height:520px">
                                 </figure>
                                 @php
                                             }

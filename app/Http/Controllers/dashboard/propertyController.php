@@ -31,7 +31,7 @@ class propertyController extends dashboardController
 
     public function index(Request $request)
     {
-        $data = Property::orderBy('title');
+        $data = Property::orderBy('id');
 
         if ($request->input('title')) {
             $data = $data->where('title', 'LIKE', '%' . $request->input('title') . '%');
@@ -84,7 +84,9 @@ class propertyController extends dashboardController
                     // Salvar a foto em algum lugar (por exemplo, no armazenamento público)
                     $path = base_path('public_html/storage/imovel/' . $data->id . '/');
 
-                    mkdir($path, 0775, true);
+                    if (!is_dir($path)) {
+                        mkdir($path, 0775, true);
+                    }
                     $foto->move($path, $foto->getClientOriginalName());
                 }
             }
@@ -146,7 +148,9 @@ class propertyController extends dashboardController
                     // Salvar a foto em algum lugar (por exemplo, no armazenamento público)
                     $path = base_path('public_html/storage/imovel/' . $data->id . '/');
 
-                    mkdir($path, 0775, true);
+                    if (!is_dir($path)) {
+                        mkdir($path, 0775, true);
+                    }
                     $foto->move($path, $foto->getClientOriginalName());
                 }
             }

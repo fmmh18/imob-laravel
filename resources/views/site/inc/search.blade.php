@@ -14,7 +14,7 @@
                         <div class="tab active-tab" id="tab-1">
                             <div class="inner-box">
                                 <div class="top-search">
-                                    <form action="index.html" method="post" class="search-form">
+                                    <form action="{!! route('list') !!}" method="get" class="search-form">
                                         <div class="row clearfix">
                                             <div class="col-lg-4 col-md-12 col-sm-12 column">
                                                 <div class="form-group">
@@ -22,7 +22,7 @@
                                                     <div class="field-input">
                                                         <i class="fas fa-search"></i>
                                                         <input type="search" name="search-field"
-                                                            placeholder="Pesquise a propriedade" required="">
+                                                            placeholder="Pesquise a propriedade">
                                                     </div>
                                                 </div>
                                             </div>
@@ -31,7 +31,7 @@
                                                     <label>Cidades</label>
                                                     <div class="select-box">
                                                         <i class="far fa-compass"></i>
-                                                        <select class="wide">
+                                                        <select class="wide" name="city">
                                                             <option data-display="Todas as Cidades">Todas as Cidades
                                                             </option>
                                                             @foreach ($allCities as $city)
@@ -46,7 +46,7 @@
                                                 <div class="form-group">
                                                     <label>Tipo de Imóvel</label>
                                                     <div class="select-box">
-                                                        <select class="wide">
+                                                        <select class="wide" name="type">
                                                             <option data-display="Todos os Tipos">Todos
                                                                 os Tipos</option>
                                                             @foreach ($allTypes as $type)

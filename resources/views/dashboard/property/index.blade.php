@@ -66,6 +66,9 @@
                         </tbody>
                     </table>
                 </div>
+                @if ($data->count() > 0)
+                    {!! $data->links() !!}
+                @endif
             </div>
         </div>
     </div>

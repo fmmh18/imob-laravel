@@ -20,7 +20,7 @@ class indexController extends Controller
 
     public function index(Request $request)
     {
-        $allProperties = Property::limit(24)->get();
+        $allProperties = Property::limit(24)->orderBy('created_at', 'desc')->get();
         $allCities = City::join('properties', 'cities.id', '=', 'properties.city_id')
             ->select('cities.id AS id', 'cities.name AS name')
             ->distinct()
@@ -44,7 +44,7 @@ class indexController extends Controller
 
     public function list(Request $request)
     {
-        $allProperties = Property::paginate(15);
+        $allProperties = Property::orderBy('created_at');
 
         if ($request->input('type')) {
             $allProperties = $allProperties->where('type_id', $request->input('type'));
@@ -63,7 +63,7 @@ class indexController extends Controller
             ->get();
         $allTypes = Type::all();
         return view('site.list', [
-            'allProperties' => $allProperties,
+            'allProperties' => $allProperties->paginate(15),
             'allCities' => $allCities,
             'allTypes' => $allTypes
         ]);
