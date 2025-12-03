@@ -44,15 +44,13 @@ jobs:
           echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
         
       - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
+          server: ftp.villagenegociosimobiliario.com.br
+          username: villagenegociosimobiliario.com.br
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps  # Use ftps para conexão segura, ou ftp se necessário
-          port: 21
           local-dir: ./
-          server-dir: /public/  # Ajuste conforme a estrutura do seu servidor
+          server-dir: /public/
           exclude: |
             **/.git*
             **/.git*/**
