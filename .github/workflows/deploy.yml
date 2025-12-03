@@ -50,7 +50,7 @@ jobs:
           username: villagenegociosimobiliario.com.br
           password: "5{A?MHIu7X<t"
           local-dir: ./
-          server-dir: /public/
+          server-dir: /home/sites/35a/b/bab5c20d52/imobiliaria/
           exclude: |
             **/.git*
             **/.git*/**
