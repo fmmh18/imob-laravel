@@ -1,0 +1,68 @@
+name: Deploy via FTP
+
+on:
+  push:
+    branches:
+      - main  # Deploy quando houver push na branch main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+        
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, dom, filter, gd, json, mbstring, pdo
+          
+      - name: Instalar dependências do Composer
+        run: composer install --prefer-dist --no-dev --optimize-autoloader --no-interaction
+        
+      - name: Instalar dependências do Node
+        run: npm ci
+        
+      - name: Build assets
+        run: npm run build
+        
+      - name: Criar arquivo .env de produção
+        run: |
+          echo "APP_NAME=Laravel" > .env
+          echo "APP_ENV=production" >> .env
+          echo "APP_KEY=${{ secrets.APP_KEY }}" >> .env
+          echo "APP_DEBUG=false" >> .env
+          echo "APP_URL=${{ secrets.APP_URL }}" >> .env
+          echo "" >> .env
+          echo "DB_CONNECTION=${{ secrets.DB_CONNECTION }}" >> .env
+          echo "DB_HOST=${{ secrets.DB_HOST }}" >> .env
+          echo "DB_PORT=${{ secrets.DB_PORT }}" >> .env
+          echo "DB_DATABASE=${{ secrets.DB_DATABASE }}" >> .env
+          echo "DB_USERNAME=${{ secrets.DB_USERNAME }}" >> .env
+          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
+        
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps  # Use ftps para conexão segura, ou ftp se necessário
+          port: 21
+          local-dir: ./
+          server-dir: /public/  # Ajuste conforme a estrutura do seu servidor
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/tests/**
+            **/.env.example
+            **/storage/logs/**
+            **/.github/**
+            **/README.md
+            **/.editorconfig
+            **/.gitignore
+            **/.gitattributes
+            **/phpunit.xml
