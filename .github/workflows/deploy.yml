@@ -48,7 +48,7 @@ jobs:
         with:
           server: ftp.villagenegociosimobiliario.com.br
           username: villagenegociosimobiliario.com.br
-          password: ${{ secrets.FTP_PASSWORD }}
+          password: "5{A?MHIu7X<t"
           local-dir: ./
           server-dir: /public/
           exclude: |
